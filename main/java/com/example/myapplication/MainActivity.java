@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
                 searchButton.setEnabled(false);
                 urlBuilder.addQueryParameter("q", cityEdit.getText().toString());
-                urlBuilder.addQueryParameter("appid", "111ef4c40db0aa2c812d2776bbfdc0ff");
+                urlBuilder.addQueryParameter("appid", "your api key");
                 String url = urlBuilder.build().toString();
                 progressBar.setVisibility(View.VISIBLE);
                 final Request request = new Request.Builder()
