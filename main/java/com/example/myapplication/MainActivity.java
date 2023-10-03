@@ -1,27 +1,17 @@
 package com.example.myapplication;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
-
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-
 import org.json.JSONArray;
-
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -32,8 +22,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -69,23 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
                 .build();
-
-
         urlBuilder = HttpUrl.parse("https://api.openweathermap.org/data/2.5/weather").newBuilder();
-
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 flashButton();
-
-
             }
-
-
         });
 
     }
@@ -102,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 final Request request = new Request.Builder()
                         .url(url)
                         .build();
-
 
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -122,11 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
                                 //throw new IOException("Unexpected code " + res);
                             }
-
                             JSONObject resObject = new JSONObject(response.string());
-
-
-                            cityName = resObject.getString("name");
+                         cityName = resObject.getString("name");
                             JSONObject sys = resObject.getJSONObject("sys");
                             country = sys.getString("country");
 
@@ -154,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.INVISIBLE);
                             startActivity(i);
                             finish();
-
-
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
